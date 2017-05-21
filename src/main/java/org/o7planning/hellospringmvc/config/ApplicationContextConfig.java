@@ -1,0 +1,30 @@
+package org.o7planning.hellospringmvc.config;
+
+/*
+ApplicationContextConfig class is used to declare Spring BEANs. 
+It is annotated by @Configuration. 
+
+@ComponentScan("org.o7planning.hellospringmvc.*") - 
+
+Deliver report to Spring to look for other Spring BEANs and Controllers 
+in the sub-packages of org.o7planning.hellospringmvc.
+ 
+*/
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+ 
+@Configuration
+@ComponentScan("org.o7planning.hellospringmvc.*") 
+public class ApplicationContextConfig { 
+
+	@Bean(name = "viewResolver")
+    public InternalResourceViewResolver getViewResolver() {
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/pages/");
+        viewResolver.setSuffix(".jsp");
+        return viewResolver;
+    } 
+}
